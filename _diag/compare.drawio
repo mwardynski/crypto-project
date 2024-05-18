@@ -1,0 +1,107 @@
+<mxfile host="Electron" modified="2024-05-18T18:52:27.994Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.2.8 Chrome/112.0.5615.165 Electron/24.2.0 Safari/537.36" etag="TH_iqjvpgYBzSTwbAaRg" version="21.2.8" type="device">
+  <diagram name="Page-1" id="ur23_stsk_eKP7JK5hig">
+    <mxGraphModel dx="2030" dy="854" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="MLuwWuf7IULOCLUcojg7-40" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="525" width="1080" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="270" height="320" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-2" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="370" y="270" width="220" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="610" y="320" width="170" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="360" width="140" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-5" value="No working&lt;br&gt;protocol yet" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="960" y="410" width="110" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-6" value="Collision-Resistant Hash&lt;br&gt;1970s" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="133.5" y="530" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-7" value="Elliptic Curve DLP&lt;br&gt;1980s-2000s" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="402.5" y="530" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-8" value="Lattice based&lt;br&gt;(LWE, SVP)&lt;br&gt;Now" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="940" y="530" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-9" value="Knowledge of Exponent&lt;br&gt;2000s-2010s" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="617.5" y="530" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-10" value="Group of unknown order 1990s-2010s" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="792.5" y="530" width="155" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-12" value="Cryptographic&lt;br&gt;Assumptions:" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry y="530" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-13" value="Quantum-Resistant" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="150" y="250" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-14" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=44;endSize=13.17;width=130;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="357.5" y="110" as="sourcePoint" />
+            <mxPoint x="157.5" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-15" value="&lt;span style=&quot;background-color: rgb(225, 213, 231);&quot;&gt;Symmetric cryptography&lt;br&gt;Quantum-Resistant&lt;/span&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;span style=&quot;background-color: rgb(213, 232, 212);&quot;&gt;Fast Arithmetic&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Smaller finite field&lt;/span&gt;&lt;br&gt;&lt;br&gt;Merkle trees&lt;br&gt;Long proofs" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="MLuwWuf7IULOCLUcojg7-14">
+          <mxGeometry x="-0.2545" y="-3" relative="1" as="geometry">
+            <mxPoint x="5" y="3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-17" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;endWidth=46;endSize=13.83;width=130;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="357.5" y="110" as="sourcePoint" />
+            <mxPoint x="557.5" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-18" value="Asymmetric cryptography&lt;br&gt;Number of theoretic assumptions&lt;br&gt;Quantum breakable&lt;br&gt;&lt;br&gt;Slow Arithmetic&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Larger finite field&lt;span style=&quot;background-color: rgb(218, 232, 252);&quot;&gt;&lt;br&gt;&lt;br&gt;Short proofs&lt;/span&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="MLuwWuf7IULOCLUcojg7-17">
+          <mxGeometry x="-0.2545" y="-3" relative="1" as="geometry">
+            <mxPoint x="12" y="-3" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-21" value="Commitment Schemes" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="805" y="470" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-23" value="Hide queries to polynomials&lt;br&gt;Require trusted setup&lt;br&gt;Limited scalability" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="620" y="450" width="152.5" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-28" value="Shortest proofs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="618.75" y="330" width="152.5" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-29" value="Fast Arithmetic" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="150" y="290" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-30" value="Transparent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="150" y="370" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-32" value="Commitment Schemes" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="150" y="470" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-33" value="Scalable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="150" y="410" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-34" value="Transparent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="805" y="370" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-35" value="Scalable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="805" y="410" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-37" value="Transparent" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="415" y="370" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-38" value="Semi-Scalable" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="630" y="410" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="MLuwWuf7IULOCLUcojg7-39" value="Commitment Schemes" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="415" y="470" width="130" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

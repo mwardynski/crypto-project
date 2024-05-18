@@ -41,9 +41,9 @@ They do the following things differently:
 2. Enforcement of low degreenes
 3. Cryptographic assumptions used to get low degreenes
 
-### Characteristics of different approaches according to the classification depicted in *ProofsCI.png*
+### Characteristics of various concepts
 
-- compare the characteristics as it's done here: https://youtu.be/5y9LyTtUtwE?si=mAZmVxI8q4trI5F_
+![w:700](_diag/compare.drawio.png)
 
 ## Mathematics backstage
 
