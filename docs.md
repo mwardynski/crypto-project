@@ -12,18 +12,34 @@
 
 ## Adjustments needed for Blockchain
 
-![w:500](_img/ProofsCI.png)
+- Privacy (Zero-Knowledge) - respect the privacy of prover's data
+- Scalability - log(N) verification, N log(N) proving
+- Universality - applicable to general computation
+- Transparency - no trusted setup
+- State-of-the-art cryptography - e.g. post-quantum secure
+
+STARK = Scalable Transparent Argument of Knowledge
+SNARK = Succinct Non-Interactive Argument of Knowledge
 
 ### STARK vs SNARK
 
-![w:500](_img/STARKvsSNARK.png)
+| STARK                                                    | SNARK                                       |
+|----------------------------------------------------------|---------------------------------------------|
+| - Transparent - no trusted setup                         | - Non-Interactive - proof is single message |
+| - Scalable - verification in log(N), proving in N log(N) | - Succinct - verification in log(N)         |
+| - Succinct setup - at most log(N)                        | - Setup - at least in linear time           |
+
+Gotcha:
+Non-interactive STARK is transparent SNARK
+Transparent SNARK with succinct setup is STARK
 
 #### Reason for having many different implementation
+
 They do the following things differently:
 
 1. Method of Arithmetization 
 2. Enforcement of low degreenes
-3. Cryptographic assumptions used to get 2
+3. Cryptographic assumptions used to get low degreenes
 
 ### Characteristics of different approaches according to the classification depicted in *ProofsCI.png*
 
