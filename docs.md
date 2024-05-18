@@ -4,9 +4,12 @@
 
 Zero-Knowledge Proofs (ZKP) are cryptographic methods used to prove knowledge about a piece of data, without revealing the data itself.
 The most common example, used to describe ZKP concept, is the strange cave of Ali Baba. Imagine a cave with one entrance that has two 
-paths A and B. These paths are separated with a door, which open only if someone knows secret. Now outside a cave are two people Bob
-and Alice. Let's say Bob is a verifier and Alice is a prover. Alice enters the cave to prove Bob that she knows secret. She chooses randomly
-path A or B.
+paths A and B. Ends of these paths are connected together. However, they are separated with a door, which opens only if someone knows the 
+secret. Outside a cave are two people Bob and Alice. Alice is a prover and Bob is a verifier. Alice enters a cave to prove Bob that she knows 
+the secret. She chooses randomly path A or B. At the same time Bob is still outside a cave and he does not know what path has been chosen. After
+that Bob enters a cave and asks Alice to come outside appearing from path A or B. Alice has 50% chance to fool Bob, because Bob can 
+ask Alice to come outside using the same path what has been chosen earlier by Alice. Therefore this task is repeated many times in order to
+reduce chances of alice cheatning.
 
 - Example of a cave (maybe where's Waldo?)
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
