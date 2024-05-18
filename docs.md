@@ -8,10 +8,9 @@ paths A and B. Ends of these paths are connected together. However, they are sep
 secret. Outside a cave are two people Bob and Alice. Alice is a prover and Bob is a verifier. Alice enters a cave to prove Bob that she knows 
 the secret. She chooses randomly path A or B. At the same time Bob is still outside a cave and he does not know what path has been chosen. After
 that Bob enters a cave and asks Alice to come outside appearing from path A or B. Alice has 50% chance to fool Bob, because Bob can 
-ask Alice to come outside using the same path what has been chosen earlier by Alice. Therefore this task is repeated many times in order to
-reduce chances of alice cheatning.
+ask Alice to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to
+reduce chances of Alice cheating.
 
-- Example of a cave (maybe where's Waldo?)
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
 
 ## First introduction of ZK proof
