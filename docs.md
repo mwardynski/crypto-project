@@ -16,9 +16,36 @@ that Bob enters a cave and asks Alice to come outside appearing from path A or B
 to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to reduce chances of Alice 
 cheating.
 
-### Advanced example of a ZKP
-
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
+
+### Probabilistics in ZKP
+
+1. The prover conceals each vertex of a 3-coloring solution of the graph, making it unobservable to the verifier.
+2. The verifier selects an edge of the graph at random, and the prover then reveals the two vertices of this chosen edge. The prover demonstrates that
+   these two vertices are of different colors. If they are the same color, it indicates that the prover is being dishonest and does not possess the correct
+   solution. If the vertices are of different colors, the verifier gains partial (but not complete) confidence in the prover’s honesty. Notably, the prover
+   has a probability of (E-1)/E of cheating successfully, where E represents the number of edges in the graph. This process then proceeds to the next step.
+4. The prover once more hides all vertices of the graph and randomly permutes the assignment of the three colors in the solution. Again, the verifier selects
+   a random edge to verify its validity (the two vertices must be differently colored). While the prover might still be cheating, the probability that the
+   prover successfully deceives in both rounds is ((E-1)/E) * ((E-1)/E) = ((E-1)/E)^2, which is lower than the probability in the previous round.
+5. By repeating this process for multiple rounds (n), the likelihood of the prover being able to deceive the verifier can be reduced to a negligible level.
+   Probability of Prover Cheating: 
+(
+(
+𝐸
+−
+1
+𝐸
+)
+𝑛
+(( 
+E
+E−1
+​
+ ) 
+n
+ )
+
 
 ## First introduction of ZK proof
 
