@@ -24,12 +24,12 @@ cheating.
 2. The verifier selects an edge of the graph at random, and the prover then reveals the two vertices of this chosen edge. The prover demonstrates that
    these two vertices are of different colors. If they are the same color, it indicates that the prover is being dishonest and does not possess the correct
    solution. If the vertices are of different colors, the verifier gains partial (but not complete) confidence in the prover’s honesty. Notably, the prover
-   has a probability of (E-1)/E of cheating successfully, where E represents the number of edges in the graph. This process then proceeds to the next step.
+   has a probability of $(E-1)/E$ of cheating successfully, where $E$ represents the number of edges in the graph. This process then proceeds to the next step.
 4. The prover once more hides all vertices of the graph and randomly permutes the assignment of the three colors in the solution. Again, the verifier selects
    a random edge to verify its validity (the two vertices must be differently colored). While the prover might still be cheating, the probability that the
-   prover successfully deceives in both rounds is ((E-1)/E) * ((E-1)/E) = ((E-1)/E)^2, which is lower than the probability in the previous round.
+   prover successfully deceives in both rounds is $((E-1)/E) * ((E-1)/E) = ((E-1)/E)^2$, which is lower than the probability in the previous round.
 5. By repeating this process for multiple rounds (n), the likelihood of the prover being able to deceive the verifier can be reduced to a negligible level.
-   Probability of Prover Cheating: (((E - 1) / E) ^ n)
+   Probability of Prover Cheating: $(((E - 1) / E) ^ n)$
 
 ## First introduction of ZK proof
 
@@ -48,7 +48,7 @@ was different in each round, a verifier was unable to link the edges revealed be
 In other words they showed that a verifier could not identify actual solution to the 3-coloring solution. As a result it can be noticed that proposed protocol 
 has three fundamental properties of ZKP. 
 
-“Given a graph G, can you color the nodes with <3 colors such that for every edge {u, v} we have f(u) =/= f(v)?” 
+“Given a graph G, can you color the nodes with <3 colors such that for every edge $\{u, v\}$ we have $f(u) \neq f(v)$?” 
 
 ![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
 
