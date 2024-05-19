@@ -2,14 +2,21 @@
 
 ## General idea behind Zero-Knowledge Proof
 
-Zero-Knowledge Proofs (ZKP) are cryptographic methods used to prove knowledge about a piece of data (problem or statement), without revealing 
-the data itself. The most common example, used to describe ZKP concept, is the strange cave of Ali Baba. Imagine a cave with one entrance that has two 
+Zero-Knowledge Proofs (ZKP) are cryptographic methods used to prove knowledge about a piece of data (problem or statement) to verifier, without
+revealing the data itself by a prover. ZKP assumes that series of actions can only be performed accurately by a prover if he or she is not guessing.
+In other case a prover will be proven wrong by the verifier's test with a high degree of probability.
+
+### Intuitive example of a ZKP
+
+The most common example, used to describe ZKP concept, is the strange cave of Ali Baba. Imagine a cave with one entrance that has two 
 paths A and B. Ends of these paths are connected together. However, they are separated with a door, which opens only if someone knows the 
 secret. Outside a cave are two people Bob and Alice. Alice is a prover and Bob is a verifier. Alice enters a cave to prove Bob that she knows 
 the secret. She chooses randomly path A or B. At the same time Bob is still outside a cave and he does not know what path has been chosen. After
-that Bob enters a cave and asks Alice to come outside appearing from path A or B. Alice has 50% chance to fool Bob, because Bob can 
-ask Alice to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to reduce chances of Alice 
+that Bob enters a cave and asks Alice to come outside appearing from path A or B. Alice has 50% chance to fool Bob, because Bob can ask Alice
+to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to reduce chances of Alice 
 cheating.
+
+### Advanced example of a ZKP
 
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
 
@@ -24,10 +31,21 @@ Proof-Systems”. In mentioned paper researchers presented three fundamental pro
 
 - Zero-knowledge - if the statement or solution is true, then a verifier learns nothing more than it is true.
 
+In 1991 a valid general zero-knowledge proof system was proposed by another group of researchers: Goldreich, Micali, and Widgerson in order to verify that
+a prover knows solution of the 3-coloring graph problem without revealing it to a verifier. If the order of the coloring of the vertices of the graph
+was different in each round, a verifier was unable to link the edges revealed between subsequent rounds to construct a solution to this problem.
+In other words they showed that a verifier could not identify actual solution to the 3-coloring solution. As a result i can be noticed that proposed protocol 
+has three fundamental properties of ZKP. 
+
+“Given a graph G, can you color the nodes with <3 colors such that for every edge {u, v} we have f(u) =/= f(v)?” 
+
+![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
+
+By creting protocol for these  NPComplete pproblem they succesfully proven that all statements in NP can be verified through their zero-knowledge protocol.
 
 
 
-- interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.wikipedia.org/wiki/Interactive_proof_system
+interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.wikipedia.org/wiki/Interactive_proof_system
   (also well described in https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf pages: 4-6)
 
 ## Adjustments needed for Blockchain
