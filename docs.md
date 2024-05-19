@@ -29,23 +29,7 @@ cheating.
    a random edge to verify its validity (the two vertices must be differently colored). While the prover might still be cheating, the probability that the
    prover successfully deceives in both rounds is ((E-1)/E) * ((E-1)/E) = ((E-1)/E)^2, which is lower than the probability in the previous round.
 5. By repeating this process for multiple rounds (n), the likelihood of the prover being able to deceive the verifier can be reduced to a negligible level.
-   Probability of Prover Cheating: 
-(
-(
-𝐸
-−
-1
-𝐸
-)
-𝑛
-(( 
-E
-E−1
-​
- ) 
-n
- )
-
+   Probability of Prover Cheating: (((E - 1) / E) ^ n)
 
 ## First introduction of ZK proof
 
