@@ -34,15 +34,21 @@ Proof-Systems”. In mentioned paper researchers presented three fundamental pro
 In 1991 a valid general zero-knowledge proof system was proposed by another group of researchers: Goldreich, Micali, and Widgerson in order to verify that
 a prover knows solution of the 3-coloring graph problem without revealing it to a verifier. If the order of the coloring of the vertices of the graph
 was different in each round, a verifier was unable to link the edges revealed between subsequent rounds to construct a solution to this problem.
-In other words they showed that a verifier could not identify actual solution to the 3-coloring solution. As a result i can be noticed that proposed protocol 
+In other words they showed that a verifier could not identify actual solution to the 3-coloring solution. As a result it can be noticed that proposed protocol 
 has three fundamental properties of ZKP. 
 
 “Given a graph G, can you color the nodes with <3 colors such that for every edge {u, v} we have f(u) =/= f(v)?” 
 
 ![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
 
-By creting protocol for these  NPComplete pproblem they succesfully proven that all statements in NP can be verified through their zero-knowledge protocol.
+By creting protocol for these  NPComplete problem they succesfully proven that all statements in NP can be verified through their zero-knowledge protocol.
 
+These revelation leads us to more efficient and more applicable verisions of ZKP called zk-SNARKs (Zero Knowledge Succinct Non-interactive Argument of
+Knowledge). This type of ZKP can be verified in a matter of milliseconds with a proof length of a hundreds of bytes. The “non-interactive” aspect refers to
+the fact that a prover can send a single message to a verifier, without having many back-and-forth interactions. zk-SNARKs were fist introduced in 2011 year
+by: Nir Bitansky, Ran Canetti, Alessandro Chiesa, and Eran Tromer in their paper “From Extractable Collision Resistance to Succinct Non-Interactive Arguments
+of Knowledge, and Back Again”. They proved that proposed an extractable collision hash function (ECRH) implies that a modified version of “Di Crecsenzo and Lipmaa’s
+protocol is a succinct non-interactive argument for NP. This modified version odf the protocol is called SNARKs.
 
 
 interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.wikipedia.org/wiki/Interactive_proof_system
