@@ -73,7 +73,7 @@ interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.
 - Transparency - no trusted setup
 - State-of-the-art cryptography - e.g. post-quantum secure
 
-STARK = Scalable Transparent Argument of Knowledge
+STARK = Scalable Transparent Argument of Knowledge  
 SNARK = Succinct Non-Interactive Argument of Knowledge
 
 ### STARK vs SNARK
@@ -100,31 +100,84 @@ They do the following things differently:
 
 ![w:700](_diag/compare.drawio.png)
 
-## Mathematics backstage
 
-### SNARK
+
+## Mathematics behind SNARK
 
 https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf chapter 3
 
-### STARK
+## Mathematics behind STARK
 
-#### Arithmetization
+### Arithmetization
 
-Show description and examples from: https://youtu.be/9VuZvdxFZQo?si=mVkJdfD0Re_gWND9
+Arithmetization - use of *low degree polynomials* to argue about computation
+- Goes back to 1930's and modified for interactive proof systems in late 1980's
 
-Proover transmits two polynomial to confirm his statement $f, g$
+Polynomial of *degree d*: $P(X) = \sum_{i \leq d} a_iX^i$  
 
-Validator evaluates the thow polynomials $f, g$ to verify with 99% certainty the statements of the proover.
-To do it validator uses two polynomials: $C(X), D(X)$
-$C(X)$ - constraint polynomial of degree $d$, which vanishes 
+Function $f: S \to \mathbb{F}$ : "lookup table" having a value from $\mathbb{F}$ for each each element from the domain $S$.  
+Function is of *degree d*, if it evaluates a *degree d* polynomial: $\forall x_0 \in S, f(x) = P(x)$
 
+Fact: Two distinct polynomials of *degree d* interact at at most *d* points, so two distinct functions of *degree d* can interact on very low number of points if only the domain is big enough.
 
-AIR - algebraic intermediate representation
-concept for prooving the program correctness, without the need for verifier to run it
+The fallowing arithmetization will be presented using AIR (Algebraic Intermediate Representation) approach, but there are other options, like R1CS (Rank-1 Constraint System).
 
-Proof recursion -> prover prooing, that it run a verifier - it can go down many times
+### Integrity and succinctness
 
-Proof systems
+Prover represents the trace of the program, or any other data, as polynomial and then uses *error correcting code* technique to add redundancy and create function of the same degree, but evaluated on much bigger domain - this function is called $f$.  
+Prover needs to create yet another function, $g$, which is of a higher degree than $f$, and evaluate it on the same domain as $f$.  
+Then prover commits to these two such functions, $f, g$, and allows the verifier to conduct the verification, which takes up to $O(log(N))$
+
+Veryfier runs the following test:
+1. selects random $x_0$ belonging to the domain extended using error correcting code
+2. queries $f(x_0)$ and assigns the result to $\alpha$
+3. queries $g(x_0)$ and assigns the result to $\beta$
+4. accepts the prover's claim only if $C(\alpha) = \beta D(x_0)$
+
+$C(X)$ - the constraint polynomial - vanishes when specified constraints are fulfilled  
+$D(X)$ - the domain polynomial - vanishes on domain of interest 
+
+### Example
+
+Prover has a list of $10^6$ integers, all of them from range $\{1, ..., 10\}$.  
+Verifier wants to check the prover's claim, without the need of iterating over all of the list entries.
+
+Prover commits to the two following functions:
+- $f$, being of degree $10^6$ and evaluated over $10^9$ points
+- $g$, degree $10^7-10^6$ and also evaluated over $10^9$ points
+
+Verifier sets polynomials $C(X), D(X)$ in the following way:
+- $C(X) = (X-1)(X-2)...(X-10)$ - vanishes on any value from $\{1, ..., 10\}$
+- $D(X) = (X-1)(X-2)...(X-10^6)$ - same like above, but for the claim domain, which is $\{1, ..., 10^6\}$
+
+#### Completeness
+
+The prover is honest and says the truth.
+
+Let $P(X)$ be the interpolant of $f$.  
+Then $C(P(X))$ vanishes on $x_0 \in \{1, ..., 10^6\}$.
+
+*Corollary:* $Q(X) = C(P(X))$ vanishes on domain $\{1, ..., 10^6\}$ only if $\exists Q'(X), deg(Q') = deg(Q) - deg(D) \leq 10^7-10^6$, such that $Q'(X)D(X) = Q(X)$.
+
+If prover is honest, then $g$ is the evaluation of $Q'(X)$, because $C(\alpha) = C(P(x_0)) = Q(x_0) = Q'(x_0)D(x_0) = \beta D(x_0)$. 
+
+#### Soundness
+
+The prover cheats, so $\exist x_0, f(x_0) \notin \{1, ..., 10\}$.
+
+Let $P(X)$ be the interpolant of $f$  
+$C(P(X))$ doesn't vanish on all $x_0 \in \{1, ..., 10^6\}$  
+$\forall Q'(X), Q'(X)D(X)=0$  on all $x_0 \in \{1, ..., 10^6\}$, because $D(x_0)=0$  
+So for any $Q'(X)$ of degree $10^7-10^6$, the polynomial $Q'(X)D(X)$ is distinct from $C(P(X))$ and of degree $10^7$  
+The evaluations of $C(P(X))$ and $Q'(X)D(X)$ disagree on $10^9-10^7$ points out of $10^9$ points  
+
+For random $x_0 \in \{1, ..., 10^6\}$, test fails with probability of 99%. The probability can be higher, if $f, g$ are selected accordingly.
+
+#### Zero Knowledge
+
+Prover appends to the initial list of integeres a few (e.g. 10) random entries, so the corresponding polynomial is of $deg = 10^6+10$ and any values after first $10^6$ entries are fully random.
+
+Verifier selects random $x_0 \in \{10^6+1, ..., 10^9\}$
 
 #### Enforcing low-degreeness
 
@@ -138,5 +191,9 @@ Jupiter notebooks with lectures to it:
 
 https://starkware.co/stark-101/
 
+
+Proof recursion -> prover prooing, that it run a verifier - it can go down many times
+
+Proof systems
 
 
