@@ -1,19 +1,31 @@
 ## Proofs of Computational Integrity
 
-## General idea behind Zero-Knowledge proof
+## General idea behind Zero-Knowledge Proof
 
-Zero-Knowledge Proofs (ZKP) are cryptographic methods used to prove knowledge about a piece of data, without revealing the data itself.
-The most common example, used to describe ZKP concept, is the strange cave of Ali Baba. Imagine a cave with one entrance that has two 
+Zero-Knowledge Proofs (ZKP) are cryptographic methods used to prove knowledge about a piece of data (problem or statement), without revealing 
+the data itself. The most common example, used to describe ZKP concept, is the strange cave of Ali Baba. Imagine a cave with one entrance that has two 
 paths A and B. Ends of these paths are connected together. However, they are separated with a door, which opens only if someone knows the 
 secret. Outside a cave are two people Bob and Alice. Alice is a prover and Bob is a verifier. Alice enters a cave to prove Bob that she knows 
 the secret. She chooses randomly path A or B. At the same time Bob is still outside a cave and he does not know what path has been chosen. After
 that Bob enters a cave and asks Alice to come outside appearing from path A or B. Alice has 50% chance to fool Bob, because Bob can 
-ask Alice to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to
-reduce chances of Alice cheating.
+ask Alice to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to reduce chances of Alice 
+cheating.
 
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
 
 ## First introduction of ZK proof
+
+Zero-Knowledge Proof was first introduced in a 1985 MIT paper from Shafi Goldwasser and Silvio Micali called “The Knowledge Complexity of Interactive 
+Proof-Systems”. In mentioned paper researchers presented three fundamental properties that define Zero-Knowledge Proofs:
+
+- Completness - if statement is true, then a verifier can be convinced by a prover that he or she also posseses knowledge about the truth of statement;
+
+- Soundness - if a statement is false, then no prover can convince a verifier that they possess knowledge about the correct statement;
+
+- Zero-knowledge - if the statement or solution is true, then a verifier learns nothing more than it is true.
+
+
+
 
 - interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.wikipedia.org/wiki/Interactive_proof_system
   (also well described in https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf pages: 4-6)
