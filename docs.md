@@ -16,6 +16,8 @@ that Bob enters a cave and asks Alice to come outside appearing from path A or B
 to come outside through the same path Alice chosen earlier. Therefore this task is repeated many times in order to reduce chances of Alice 
 cheating.
 
+![image](_img/att.24TRmkT9G9Tp4tAzAh6VSn7Q9bU3NqzVJg8EeaQxDQg.jpg)
+
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
 
 ### Probabilistics in ZKP
@@ -75,6 +77,9 @@ interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.
 
 STARK = Scalable Transparent Argument of Knowledge  
 SNARK = Succinct Non-Interactive Argument of Knowledge
+
+![image](_img/UTKB4bILBsDzDMEGU9feYg.png)
+
 
 ### STARK vs SNARK
 
