@@ -1,4 +1,6 @@
-## Proofs of Computational Integrity
+# Zero-Knowledge Proofs
+**Course: Cryptography methods in data science**
+**Authors: Marcin Wardyński, Bartłomiej Jamiołkowski** 
 
 ## General idea behind Zero-Knowledge Proof
 
