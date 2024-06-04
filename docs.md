@@ -111,9 +111,6 @@ They do the following things differently:
 
 ### Arithmetization
 
-
-
-
 ### Integrity and succinctness
 
 
@@ -130,7 +127,7 @@ They do the following things differently:
 
 #### Enforcing low-degreeness
 
-https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf chapter 3
+
 
 ## Mathematics behind STARK
 
