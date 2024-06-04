@@ -24,8 +24,12 @@ cheating.
 
 - Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
 
-### Probabilistics in ZKP
+### Practical example of ZKP
+One of the first valid general ZKP systems was proposed by Goldreich, Micali, and Widgerson, specifically to verify that a prover knew the 3-coloring of a graph.
+The 3-coloring graph problem is an NP-Complete problem stated as follows:
+“Given a graph G, can you color the nodes with <= 3 colors such that for every neighbouring edge we have different colors?"
 
+Proposed ZKP system works in the following way:
 1. The prover conceals each vertex of a 3-coloring solution of the graph, making it unobservable to the verifier.
 2. The verifier selects an edge of the graph at random, and the prover then reveals the two vertices of this chosen edge. The prover demonstrates that
    these two vertices are of different colors. If they are the same color, it indicates that the prover is being dishonest and does not possess the correct
