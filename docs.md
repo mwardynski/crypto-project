@@ -22,8 +22,6 @@ cheating.
 
 ![image](_img/att.24TRmkT9G9Tp4tAzAh6VSn7Q9bU3NqzVJg8EeaQxDQg.jpg)
 
-- Different introduction into ZK, not so trivial: https://youtu.be/3uSG-Xp5slM?si=fWT2JZlz6-zmSeSO
-
 ### Practical example of ZKP
 One of the first valid general ZKP systems was proposed by Goldreich, Micali, and Widgerson, specifically to verify that a prover knew the 3-coloring of a graph.
 The 3-coloring graph problem is an NP-Complete problem stated as follows:
