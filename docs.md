@@ -1,4 +1,4 @@
-# Zero-Knowledge Proofs
+![image](https://github.com/mwardynski/crypto-zk/assets/61807667/0329409b-089f-4002-ae90-92a358cee254)
 
 **Course: Cryptography methods in data science**
 
