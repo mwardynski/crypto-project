@@ -22,10 +22,13 @@ cheating.
 
 ![image](_img/att.24TRmkT9G9Tp4tAzAh6VSn7Q9bU3NqzVJg8EeaQxDQg.jpg)
 
-### Practical example of ZKP
+### Academic example of ZKP
 One of the first valid general ZKP systems was proposed by Goldreich, Micali, and Widgerson, specifically to verify that a prover knew the 3-coloring of a graph.
 The 3-coloring graph problem is an NP-Complete problem stated as follows:
-“Given a graph G, can you color the nodes with <= 3 colors such that for every neighbouring edge we have different colors?"
+
+“Given a graph G, can you color the nodes with <3 colors such that for every edge $\{u, v\}$ we have $f(u) \neq f(v)$?” 
+
+![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
 
 Proposed ZKP system works in the following way:
 1. The prover conceals each vertex of a 3-coloring solution of the graph, making it unobservable to the verifier.
@@ -54,13 +57,8 @@ In 1991 a valid general zero-knowledge proof system was proposed by another grou
 a prover knows solution of the 3-coloring graph problem without revealing it to a verifier. If the order of the coloring of the vertices of the graph
 was different in each round, a verifier was unable to link the edges revealed between subsequent rounds to construct a solution to this problem.
 In other words they showed that a verifier could not identify actual solution to the 3-coloring solution. As a result it can be noticed that proposed protocol 
-has three fundamental properties of ZKP. 
-
-“Given a graph G, can you color the nodes with <3 colors such that for every edge $\{u, v\}$ we have $f(u) \neq f(v)$?” 
-
-![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
-
-By creting protocol for these  NPComplete problem they succesfully proven that all statements in NP can be verified through their zero-knowledge protocol.
+has three fundamental properties of ZKP. By creting protocol for these  NP-Complete problem they succesfully proven that all statements in NP can be verified 
+through their zero-knowledge protocol.
 
 These revelation leads us to more efficient and more applicable verisions of ZKP called zk-SNARKs (Zero Knowledge Succinct Non-interactive Argument of
 Knowledge). This type of ZKP can be verified in a matter of milliseconds with a proof length of a hundreds of bytes. The “non-interactive” aspect refers to
@@ -68,10 +66,6 @@ the fact that a prover can send a single message to a verifier, without having m
 by: Nir Bitansky, Ran Canetti, Alessandro Chiesa, and Eran Tromer in their paper “From Extractable Collision Resistance to Succinct Non-Interactive Arguments
 of Knowledge, and Back Again”. They proved that proposed an extractable collision hash function (ECRH) implies that a modified version of “Di Crecsenzo and Lipmaa’s
 protocol is a succinct non-interactive argument for NP. This modified version odf the protocol is called SNARKs.
-
-
-interactive proof model by Goldwasser, Micali, and Rackoff in 1985 - https://en.wikipedia.org/wiki/Interactive_proof_system
-  (also well described in https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf pages: 4-6)
 
 ## Adjustments needed for Blockchain
 
