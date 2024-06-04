@@ -113,6 +113,27 @@ They do the following things differently:
 
 ## Mathematics behind SNARK
 
+### Arithmetization
+
+
+
+
+### Integrity and succinctness
+
+
+### Example
+
+
+#### Completeness
+
+
+#### Soundness
+
+
+#### Zero Knowledge
+
+#### Enforcing low-degreeness
+
 https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf chapter 3
 
 ## Mathematics behind STARK
