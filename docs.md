@@ -132,6 +132,7 @@ Currently, the most common constructions of SNARKs involve a CRS (Common Referen
 scheme **E** where **E(x) = g^x**. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
 
 E(s^0), E(s^1), ... , E(s^d)
+
 E(zs^0), E(zs^1), ... , E(zs^d)
 
 where **d** is the maximum degree of all polynomials.
@@ -141,6 +142,13 @@ these published values above to prove that he can compute a polynomial function 
 value **s**
 
 ### Example
+
+Consider a function **f(x) = x^2 + x**. The prover computes the following:
+
+E(f(s)) = E(s^2 + s) = g^(s^2 + s) = g^(s^2) * g^s = E(s^2) * E(s)
+
+Each of **E(s^2)** and **E(s)** can be taken from the publicly published CRS. By the same token, the prover can also compute **n = E(z * f(s))**, and sends both **m** and **n** to the verifier.
+
 
 
 #### Completeness
