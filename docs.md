@@ -160,6 +160,10 @@ chosen in the CRS setup phase, such that the following holds for all inputs valu
 Pairing function **p** is a computable bijection such that **p: NXN -> N**. We can see immediately that this pairing function **p** becomes useful, as we can plug in the pairs **n**, **g** and
 **m**, **g^z** into the pairing function, and if the results match, then we know that the prover solved the polynomial correctly at **s**, as shown by the following equations:
 
+#### Non-interactive
+
+#### Succinct
+
 #### Zero Knowledge
 
 To add zero-knowledge, we modify **m** and **n** with the prover choosing a random value � to “shift” the value of **f(s)** before encryption. So prover computes new:
