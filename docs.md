@@ -172,7 +172,22 @@ and sends it to a verifier.
 
 E(� + f(s)) = g^(� + f(s)) = g^� + g^f(s) = E(f(s)) * E(�)
 
+We can see from above that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. Once the verifier receives **m**
+and **n**, the values are inputted into the pairing function **p** in a similar fashion to the example above:
 
+p(m, g^z) = p(g^(� + f(s), g^z) = p(g, g)^(z * (� + f(s)))
+
+p(n, g^z) = p(g^(z * (� + f(s)), g) = p(g, g)^(z * (� + f(s)))
+
+From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
+
+As mentioned previously, we want to protect
+knowledge of �(�(�)) and �(�) from leaking to the verifier. It is clear that �(�(�)) is not
+leaked, as the prover no longer sends this value to the verifier for validation. For �(�)  the only
+useful information that a malicious verifier can extract from the values �` and �` is � + �(�).
+Since � is a random value only known to the prover13, it is now apparent that the malicious
+verifier can no longer deduce the value of �(�), and thus we have shown the new modified
+protocol has zero-knowledge
 
 ## Mathematics behind STARK
 
