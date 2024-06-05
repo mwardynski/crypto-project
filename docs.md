@@ -168,6 +168,10 @@ m = E(� + f(s))
 
 n = E(z * (� + f(s)))
 
+and sends it to a verifier.
+
+E(� + f(s)) = g^(� + f(s)) = g^� + g^f(s) = E(f(s)) * E(�)
+
 
 
 ## Mathematics behind STARK
