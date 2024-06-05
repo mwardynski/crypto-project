@@ -116,7 +116,7 @@ equations that can be checked for correctness.
 
 1. The original problem is reduced to QSPs (Quadratic Span Programs) proposed by Gennaro, Gentry, Parno, and Raykova.
 
-2. A QSP consists of multiple polynomials **v0...vi, w0...wj** over a field F and a target polynomial t.
+2. A QSP consists of multiple polynomials **v0...vi, w0...wj** over a field **F** and a target polynomial **t**.
 
 3. The QSP is accepted for an input and a witness if and only if **t** divides **va ∗ wb**, where **va** and **wb** is constructed from the witness and the original polynomials **v0...vi, w0...wj**.
 Thus the prover shows that **t ∗ k = va ∗ wb** for some other polynomial **k**. 
@@ -128,7 +128,17 @@ This reduction effectively turns the problem of verifying computational integrit
 Because of the complexity of large polynomials and large runtime of multiplying and dividing polynomials, this QSP is hard to completely verify in practice. Therefore verifier chooses a
 secret point **s** such that **t(s) * k(s) = va(s) * wb(s)**.
 
+Currently, the most common constructions of SNARKs involve a CRS (Common Reference String) and a set-up of initial parameters. Firstly, we choose a group and agenerator **g**, and an encryption
+scheme **E** where **E(x) = g^x**. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
 
+E(s^0), E(s^1), ... , E(s^d)
+E(zs^0), E(zs^1), ... , E(zs^d)
+
+where **d** is the maximum degree of all polynomials.
+
+Once these values are calculated and posted, the verifier must discard the secret point **s** for security reasons, so that the prover cannot obtain it to falsely create proofs. The prover must then use
+these published values above to prove that he can compute a polynomial function **f**. We can see that any prover can compute **m = E(f(s))** for any function **f** without knowing the verifier’s secret
+value **s**
 
 ### Example
 
