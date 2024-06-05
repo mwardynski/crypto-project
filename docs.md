@@ -181,13 +181,9 @@ p(n, g^z) = p(g^(z * (� + f(s)), g) = p(g, g)^(z * (� + f(s)))
 
 From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
 
-As mentioned previously, we want to protect
-knowledge of �(�(�)) and �(�) from leaking to the verifier. It is clear that �(�(�)) is not
-leaked, as the prover no longer sends this value to the verifier for validation. For �(�)  the only
-useful information that a malicious verifier can extract from the values �` and �` is � + �(�).
-Since � is a random value only known to the prover13, it is now apparent that the malicious
-verifier can no longer deduce the value of �(�), and thus we have shown the new modified
-protocol has zero-knowledge
+As mentioned previously, we want to protect knowledge of **E(f(s))** and **E(s)** from leaking to the verifier. It is clear that **E(f(s))** is not leaked, as the prover no longer sends this value
+to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **� + f(s)**. Since � is a random value only known
+to the prover, it is now apparent that the malicious verifier can no longer deduce the value of **f(s)**, and thus we have shown the protocol has zero-knowledge.
 
 ## Mathematics behind STARK
 
