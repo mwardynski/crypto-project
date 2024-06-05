@@ -110,6 +110,17 @@ They do the following things differently:
 ## Mathematics behind SNARK
 
 ### Arithmetization
+Arithmetization is the process of transforming a computational integrity problem into a problem about polynomials. In SNARKs, this involves encoding the original problem as a set of polynomial
+equations that can be checked for correctness.
+
+The original problem is reduced to QSPs (Quadratic Span Programs) propozsed by by Gennaro, Gentry, Parno, and Raykova.
+
+A QSP consists of multiple polynomials v0...vi, w0...wj oover a field F and a target polynomial t.
+
+The QSP is accepted for an input and a witness if and only if t divides va ∗ wb, where va and wb is constructed from the witness and the original polynomials v0...vi, w0...wj.
+Thus the prover shows that t ∗ k = va ∗ wb for some other polynomial k. 
+
+This reduction effectively turns the problem of verifying computational integrity into a problem of verifying polynomial relationships.
 
 ### Integrity and succinctness
 
