@@ -148,21 +148,12 @@ Consider a function **f(x) = x^2 + x**. The prover computes the following:
 E(f(s)) = E(s^2 + s) = g^(s^2 + s) = g^(s^2) * g^s = E(s^2) * E(s)
 
 Each of **E(s^2)** and **E(s)** can be taken from the publicly published CRS. By the same token, the prover can also compute **n = E(z * f(s))**, and sends both **m** and **n** to the verifier.
-
-
-
-
 The reason that the verifier needs **n** in addition to **m** is that earlier the verifier had discarded **s**, so there is no way to check that the prover correctly solved the polynomial **f** at **s**.
 Thus a way around this is once the verifier receives the values **m** and **n**, the verifier must check that **m** and **n** match through an pairing function �, which is chosen with the group
 chosen in the CRS setup phase, such that the following holds for all inputs values **x** and **y**:
 
-
 Pairing function **p** is a computable bijection such that **p: NXN -> N**. We can see immediately that this pairing function **p** becomes useful, as we can plug in the pairs **n**, **g** and
 **m**, **g^z** into the pairing function, and if the results match, then we know that the prover solved the polynomial correctly at **s**, as shown by the following equations:
-
-#### Non-interactive
-
-#### Succinct
 
 #### Zero Knowledge
 
