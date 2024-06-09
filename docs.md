@@ -149,7 +149,7 @@ E(f(s)) = E(s^2 + s) = g^(s^2 + s) = g^(s^2) * g^s = E(s^2) * E(s)
 
 Each of **E(s^2)** and **E(s)** can be taken from the publicly published CRS. By the same token, the prover can also compute **n = E(z * f(s))**, and sends both **m** and **n** to the verifier.
 The reason that the verifier needs **n** in addition to **m** is that earlier the verifier had discarded **s**, so there is no way to check that the prover correctly solved the polynomial **f** at **s**.
-Thus a way around this is once the verifier receives the values **m** and **n**, the verifier must check that **m** and **n** match through an pairing function �, which is chosen with the group
+Thus a way around this is once the verifier receives the values **m** and **n**, the verifier must check that **m** and **n** match through an pairing function &sigma, which is chosen with the group
 chosen in the CRS setup phase, such that the following holds for all inputs values **x** and **y**:
 
 Pairing function **p** is a computable bijection such that **p: NXN -> N**. We can see immediately that this pairing function **p** becomes useful, as we can plug in the pairs **n**, **g** and
@@ -157,27 +157,27 @@ Pairing function **p** is a computable bijection such that **p: NXN -> N**. We c
 
 #### Zero Knowledge
 
-To add zero-knowledge, we modify **m** and **n** with the prover choosing a random value � to “shift” the value of **f(s)** before encryption. So prover computes new:
+To add zero-knowledge, we modify **m** and **n** with the prover choosing a random value &sigma to “shift” the value of **f(s)** before encryption. So prover computes new:
 
-m = E(� + f(s))
+m = E(&sigma + f(s))
 
-n = E(z * (� + f(s)))
+n = E(z * (&sigma + f(s)))
 
 and sends it to a verifier.
 
-E(� + f(s)) = g^(� + f(s)) = g^� + g^f(s) = E(f(s)) * E(�)
+E(&sigma + f(s)) = g^(&sigma + f(s)) = g^&sigma + g^f(s) = E(f(s)) * E(&sigma)
 
 We can see from above that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. Once the verifier receives **m**
 and **n**, the values are inputted into the pairing function **p** in a similar fashion to the example above:
 
-p(m, g^z) = p(g^(� + f(s), g^z) = p(g, g)^(z * (� + f(s)))
+p(m, g^z) = p(g^(&sigma + f(s), g^z) = p(g, g)^(z * (&sigma + f(s)))
 
-p(n, g^z) = p(g^(z * (� + f(s)), g) = p(g, g)^(z * (� + f(s)))
+p(n, g^z) = p(g^(z * (&sigma + f(s)), g) = p(g, g)^(z * (&sigma + f(s)))
 
 From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
 
 As mentioned previously, we want to protect knowledge of **E(f(s))** and **E(s)** from leaking to the verifier. It is clear that **E(f(s))** is not leaked, as the prover no longer sends this value
-to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **� + f(s)**. Since � is a random value only known
+to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **&sigma + f(s)**. Since &sigma is a random value only known
 to the prover, it is now apparent that the malicious verifier can no longer deduce the value of **f(s)**, and thus we have shown the protocol has zero-knowledge.
 
 ## Mathematics behind STARK
