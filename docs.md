@@ -159,25 +159,25 @@ Pairing function **p** is a computable bijection such that **p: NXN -> N**. We c
 
 To add zero-knowledge, we modify **m** and **n** with the prover choosing a random value &sigma to “shift” the value of **f(s)** before encryption. So prover computes new:
 
-m = E(&sigma + f(s))
+m = E(σ + f(s))
 
-n = E(z * (&sigma + f(s)))
+n = E(z * (σ + f(s)))
 
 and sends it to a verifier.
 
-E(&sigma + f(s)) = g^(&sigma + f(s)) = g^&sigma + g^f(s) = E(f(s)) * E(&sigma)
+E(σ + f(s)) = g^(σ + f(s)) = g^σ + g^f(s) = E(f(s)) * E(σ)
 
 We can see from above that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. Once the verifier receives **m**
 and **n**, the values are inputted into the pairing function **p** in a similar fashion to the example above:
 
-p(m, g^z) = p(g^(&sigma + f(s), g^z) = p(g, g)^(z * (&sigma + f(s)))
+p(m, g^z) = p(g^(σ + f(s), g^z) = p(g, g)^(z * (σ + f(s)))
 
-p(n, g^z) = p(g^(z * (&sigma + f(s)), g) = p(g, g)^(z * (&sigma + f(s)))
+p(n, g^z) = p(g^(z * (σ + f(s)), g) = p(g, g)^(z * (σ + f(s)))
 
 From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
 
 As mentioned previously, we want to protect knowledge of **E(f(s))** and **E(s)** from leaking to the verifier. It is clear that **E(f(s))** is not leaked, as the prover no longer sends this value
-to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **&sigma + f(s)**. Since &sigma is a random value only known
+to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **σ + f(s)**. Since &sigma is a random value only known
 to the prover, it is now apparent that the malicious verifier can no longer deduce the value of **f(s)**, and thus we have shown the protocol has zero-knowledge.
 
 ## Mathematics behind STARK
