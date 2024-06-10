@@ -130,25 +130,25 @@ They do the following things differently:
 
 ### Arithmetization
 
-Arithmetization is the process of transforming a computational integrity problem into a problem about polynomials. In SNARKs, this involves encoding the original problem as a set of polynomial
+A transformation of a computational integrity problem into a problem about polynomials is commonly known as arithmetization. In SNARKs, this involves encoding the original problem as a set of polynomial
 equations that can be checked for correctness.
 
-1. The original problem is reduced to QSPs (Quadratic Span Programs) proposed by Gennaro, Gentry, Parno, and Raykova.
+1. The original problem is reduced to QSPs (Quadratic Span Programs).
 
 2. A QSP consists of multiple polynomials **v0...vi, w0...wj** over a field **F** and a target polynomial **t**.
 
-3. The QSP is accepted for an input and a witness if and only if **t** divides **va ∗ wb**, where **va** and **wb** is constructed from the witness and the original polynomials **v0...vi, w0...wj**.
+3. The QSP is accepted for an input and a witness if **t** divides **va ∗ wb**, where **va** and **wb** is constructed from the witness and the original polynomials **v0...vi, w0...wj**.
 Thus the prover shows that **t ∗ k = va ∗ wb** for some other polynomial **k**. 
 
-This reduction effectively turns the problem of verifying computational integrity into a problem of verifying polynomial relationships.
+Described reduction turns a problem of verifying computational integrity into a problem of verifying polynomial relationships.
 
 ### Integrity and succinctness
 
-Because of the complexity of large polynomials and large runtime of multiplying and dividing polynomials, this QSP is hard to completely verify in practice. Therefore verifier chooses a
+Because of the complexity of large polynomials and large runtime of multiplying and dividing polynomials, QSP is hard to completely verify in practice. Therefore verifier chooses a
 secret point **s** such that **t(s) * k(s) = va(s) * wb(s)**.
 
-Currently, the most common constructions of SNARKs involve a CRS (Common Reference String) and a set-up of initial parameters. Firstly, we choose a group and agenerator **g**, and an encryption
-scheme **E** where **$E(x) = g^x$**. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
+The most common constructions of SNARKs involve a CRS (Common Reference String) and a set-up of initial parameters. Firstly, a: group, agenerator **g** and an encryption
+scheme **E** where **$E(x) = g^x$** are chosen. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
 
 $E(s^0), E(s^1), ... , E(s^d)$
 
@@ -156,27 +156,27 @@ $E(zs^0), E(zs^1), ... , E(zs^d)$
 
 where **d** is the maximum degree of all polynomials.
 
-Once these values are calculated and posted, the verifier must discard the secret point **s** for security reasons, so that the prover cannot obtain it to falsely create proofs. The prover must then use
-these published values above to prove that he can compute a polynomial function **f**. We can see that any prover can compute **m = E(f(s))** for any function **f** without knowing the verifier’s secret
-value **s**
+As soon as these values are calculated and posted, the verifier discards the secret point **s** for security reasons, so that the prover cannot obtain it to falsely create proofs. After that the prover must
+use these published values to prove that she or he can compute a polynomial function **f**. It is noticeable that any prover can compute **m = E(f(s))** for any function **f** without knowing the verifier’s secret
+value **s**.
 
 ### Example
 
-Consider a function **$f(x) = x^2 + x$**. The prover computes the following:
+Consider a function **$f(x) = x^2 + x$**. Therefore, the prover computes the following:
 
 $E(f(s)) = E(s^2 + s) = g^(s^2 + s) = g^(s^2) * g^s = E(s^2) * E(s)$
 
-Each of **E(s^2)** and **E(s)** can be taken from the publicly published CRS. By the same token, the prover can also compute **n = E(z * f(s))**, and sends both **m** and **n** to the verifier.
-The reason that the verifier needs **n** in addition to **m** is that earlier the verifier had discarded **s**, so there is no way to check that the prover correctly solved the polynomial **f** at **s**.
-Thus a way around this is once the verifier receives the values **m** and **n**, the verifier must check that **m** and **n** match through an pairing function &sigma, which is chosen with the group
-chosen in the CRS setup phase, such that the following holds for all inputs values **x** and **y**:
+Each of **E(s^2)** and **E(s)** can be taken from the published CRS. By the same token, the prover can also compute **n = E(z * f(s))**. Then, he sends both **m** and **n** to the verifier.
+The reason behind verifier's need to obtain both **n** and **m** is that the verifier had earlier discarded **s**. As a result there is no way to check that the prover correctly solved the polynomial **f** at **s**.
+Thus a way around this is once the verifier receives the values **m** and **n**, the verifier must check that **m** and **n** match through an pairing function **σ**. It is chosen with the group
+chosen during the CRS setup phase, such that the following holds for all inputs values **x** and **y**:
 
-Pairing function **p** is a computable bijection such that **p: NXN -> N**. We can see immediately that this pairing function **p** becomes useful, as we can plug in the pairs **n**, **g** and
-**m**, **$g^z$** into the pairing function, and if the results match, then we know that the prover solved the polynomial correctly at **s**, as shown by the following equations:
+Pairing function **p** is a computable bijection such that **p: NXN -> N**. Irt is noticeable that this pairing function **p** becomes useful, so we can plug in the pairs **n**, **g** and
+**m**, **$g^z$** into the pairing function. If the results match, then the prover solved the polynomial correctly at **s**.
 
 #### Zero Knowledge
 
-To add zero-knowledge, we modify **m** and **n** with the prover choosing a random value &sigma to “shift” the value of **f(s)** before encryption. So prover computes new:
+To add zero-knowledge, **m** and **n** are modified with the prover choosing a random value **σ** to “shift” the value of **f(s)** before encryption. So prover computes new:
 
 m = E(σ + f(s))
 
@@ -186,18 +186,18 @@ and sends it to a verifier.
 
 $E(σ + f(s)) = g^(σ + f(s)) = g^σ + g^f(s) = E(f(s)) * E(σ)$
 
-We can see from above that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. Once the verifier receives **m**
-and **n**, the values are inputted into the pairing function **p** in a similar fashion to the example above:
+Above equations show that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. As soon as the verifier receives **m**
+and **n**, the values are inputted into the pairing function **p** in a similar fashion to presented example above:
 
 $p(m, g^z) = p(g^(σ + f(s), g^z) = p(g, g)^(z * (σ + f(s)))$
 
 $p(n, g^z) = p(g^(z * (σ + f(s)), g) = p(g, g)^(z * (σ + f(s)))$
 
-From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
+Equations placed above show that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
 
-As mentioned previously, we want to protect knowledge of **E(f(s))** and **E(s)** from leaking to the verifier. It is clear that **E(f(s))** is not leaked, as the prover no longer sends this value
-to the verifier for validation. For **f(s)**  the only useful information that a malicious verifier can extract from the values **m** and **n** is **σ + f(s)**. Since &sigma is a random value only known
-to the prover, it is now apparent that the malicious verifier can no longer deduce the value of **f(s)**, and thus we have shown the protocol has zero-knowledge.
+As it was mentioned before, knowledge of **E(f(s))** and **E(s)** must be protected from leaking to the verifier. It is clear that **E(f(s))** is not leaked, as the prover no longer sends this value
+to the verifier for validation. For **f(s)**  the only useful information that a dishonest verifier can extract from the values **m** and **n** is **σ + f(s)**. Since **σ** is a random value only known
+to the prover, it is now clear that the dishonest verifier can no longer deduce the value of **f(s)**. By this way we show that the protocol has zero-knowledge aspect.
 
 ## Mathematics behind STARK
 
