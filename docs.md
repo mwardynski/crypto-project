@@ -118,6 +118,7 @@ They do the following things differently:
 1. Method of Arithmetization 
 2. Enforcement of low degreenes
 3. Cryptographic assumptions used to get low degreenes
+<div style="page-break-after: always;"></div>
 
 ### Characteristics of various concepts
 
@@ -328,6 +329,7 @@ We make the following assumptions for the above recursive process to work:
 The above requirements will work, if we choose the domain for L as a multiplicative subgroup whose size is a power of 2.
 
 Additional we assume for simplicity, that the initial degree $d$ is also a power of 2.
+<div style="page-break-after: always;"></div>
 
 ##### Query phase
 
@@ -342,7 +344,7 @@ $$
 
 Verifier can solve this system of equations and deduct the values of $g_0(z^2)$ and $h_0(z^2)$. Next the verifier can compute the value of $f_1(z^2)$ which is a linear combination of the two. Verifier can now query $f_1(z^2)$ and check, whether above computations were correct. If the computation is correct, than this commitment from the prover is also correct and verifier can repeat this test for $f_1(-z^2)$ and further for next equation systems.
 After $log d$ such steps the verifiers comes down to the constant polynomials commited by the prover. Now the verifer can check, whether the result of previously solved functions is equal to the  commited constant polynomials from prover.  
-The routine described above takes all together $O(log(d)) time.$
+The routine described above takes all together $O(log(d))$ time.
 
 The whole query phase won't give us 100% certainty, that prover is not cheating, so it need to be repeated multiple times to increase the probability of the statement being truth to desired level.
 
