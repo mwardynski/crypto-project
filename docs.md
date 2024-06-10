@@ -255,19 +255,76 @@ Verifier selects random $x_0 \in \{10^6+1, ..., 10^9\}$
 
 #### Enforcing low-degreeness
 
-To the right more homomorphic strucure, where you can add things
-To the left more unstructured, so quantum resistance, but hard to add anything 
+Testing for low degreeness is one of the major tools for probabilistic proofs.
+
+Let's distinguish two possible cases to check:
+- whether function $f$ agrees with degree $d$ or less polynomial $p$ over field $F$ on $L$ points.
+- whether function $f$ is far away from all low degree polynomials, e.g. we need to change 10% or more of the values, so that $f$ agrees with polynomial of degree less than $d$.
+
+Arithmetization described in the previous sections ensures, that the honest prover will land in the first case, whereas dishonest prover will land in the second case, and that with high probability. Thanks to the characteristics of the arithmetization, there is no possibility for the prover, to land between the two stated cases.
+
+The test over the whole function's $f$ domain $L$ requires to check all the points, so it's the test complexity stays linear.  
+There exists a test, which by querying $f$ at a small number of locations can correlated it with either case one, or two. In the following part of this section we will describe this test.
+
+##### Direct test
+
+The simple test, which checks whether a polynomial is of degree less than $d$ requires $d+1$ queries and relies on the following statement, which is true for polynomials:  
+*Any polynomial of degree less than $d$ is fully determined by its values at $d$ distinct locations of $F$*.
+
+It's important to notice, that the number of queries $d+1$ can be significantly smaller the $|L|$ - the size of the domain of $f$.
+
+The so-called *direct test* goes in the following way: query $f$ at locations $z_1, z_2 ... z_d$ and additionally at random location $w$. $f$ at $z_1, z_2 ... z_d$ define a unique polynomial $h(x)$ of degree less than $d$ over $F$, and at these points it agrees with $f$. Having $h(x)$ defined, we need to check whether $h(w) = f(w)$.
+
+By definition, $h(x)$ will be identical to $p(x)$ if $f(x)$ is equal to polynomial $p(x)$ of degree less than $d$, so the test in this case always passes. But what happens, if $f$ is $\delta$-far from any polynomial of degree less than $d$? Let's skip the proof and just say, that the *direct test* rejects it with probability at least $\delta$.
+
+Unfortunately, we need to reduce the complexity of this test even lower, which is to $O(log d)$, to suffice the requirements.
 
 
-### Code for STARK
+##### FRI - Fast Reed — Solomon Interactive Oracle Proof of Proximity - general idea
 
-Jupiter notebooks with lectures to it:
+To reduce the complexity, we need to receive some auxiliary information about the function $f$. After receiving this information from the prover, the complexity can be reduced to $O(log d)$, yet for the whole process, the prover remains untrusted. The prover will enable the verifier to query the auxiliary functions on selected by verifier locations, but to guarantee, that the prover won't be able to cheat and send the correct value after getting to know the query from verifier, prover needs to commit to the values of the auxiliary function before receiving the actual query. In the case of STARK, prover commits to these functions using Merkle tree.
 
-https://starkware.co/stark-101/
+The general concept of the complexity improvement in FRI is built upon two following ideas:
 
+1. The number of queries to check the polynomial degree can be effectively reduced per polynomial, by combining two polynomials into one
+2. Polynomail of degree less than $d$ can be turned into two polynomials with degree less than $d/2$
 
-Proof recursion -> prover prooing, that it run a verifier - it can go down many times
-Proof systems
+Elaborating a bit more on point 1, it starts from the verifier selecting $\alpha$ out of field and providing it to the prover. Next prover commits to a polynomial $h(x) = f(x) + \alpha g(x)$, by calculating the values of it over the domain $L$, storing them as leaves in Merkle tree and sending the root of it. The verifier needs now only $d+1$ queries to verify the degree of these two polynomials using the *direct test*, so effectively we've spared nearly 50% of the queries.
+
+We want also to point, that there is only a small chance, that when $f$ and $g$ have the degree at least $d$, then $h$ has a smaller degree. But let's assume such case and state, that there exists a $x^b$ in $f$, where $b \geq d$. Having such a $x^b$ with a non-zero coefficient, there is at most one $\alpha$ which can zero this coefficient. We know that, the $\alpha$ is selected by the verifier for the field, so the chance of picking such $\alpha$ is at most $1/|F|$, but these probability can be negligible, if we just select big enough field (e.g. $|F| > 2^{128}$).
+
+We also need to add, that under some mild conditions (which are described in the following publications: [article1](https://acmccs.github.io/papers/p2087-amesA.pdf), [article2](https://eccc.weizmann.ac.il/report/2017/134/)), it is not possible that $f$ will be far away from low degree polynomial, and $h$ will be close to it.
+
+The final consideration to the first point treats about the honesty of the prover regarding the form of the polynomial $h(x)$, namely how can we be sure, that $h(x) = f(x) \alpha g(x)$? Can it be, that the prover sent us a polynomial of low degree, which doesn't satisfy the linear combination requested be the prover? Actually the verifier can test it by running some tests of selecting random $z \in L$ and evaluating the equation. If it holds for many of them, then with big chance it will hold for whole $L$. These tests increase the complexity of this step, which till now was $d+1$, but the number of test should be way smaller than $d$.
+
+To say something more to the point 2: having polynomial $f(x)$ of degree $d$, it can be split into two polynomials of degree less than $d/2$, where one of them contains all the coefficients of the odd powers of x, and another of even. Let's define them in the following way: $f(x) = g(x^2) + xh(x^2)$. E.g. for $d=4$, $f(X) = a_0x^3 + a_1x^2 + a_2x + a_3$, $g(x) = a_1x + a_3$ and $h(x) = a_0x^3 + a_2$.
+
+##### Commit phase
+
+The prover starts from spliting the original polynomial $f_0(x) = f(x)$ into two polynomials of degree less than $d/2$: $f_0(x) = g_0(x^2) + xh_0(x^2)$. The verifier specifies random $\alpha_0$, and asks prover to commit to the polynomial $f_1(x) = g_0(x) + \alpha_0h_0(x)$. This way $f_1(x)$ is of degree less than $d/2$. We continue this process by spliting $f_1(x)$ into $g_1(x)$ and $h_1(x)$, then specifying random $\alpha_1$, commiting to $f_2(x)$ and so on.  
+Because we halve the degree of polynomial with each step, after $log(d)$ we are left with constant polynomials, which can be send from prover to the veryfier.
+
+We make the following assumptions for the above recursive process to work:
+- for every $z$ in the domain $L$, -$z$ is also in this domain
+- the commitment  of $f_1(x)$ is actually over $L^2 = \{x^2; x \in L \}$, and it also has to satisfy the $\{z, -z\}$
+The above requirements will work, if we choose the domain for L as a multiplicative subgroup whose size is a power of 2.
+
+Additional we assume for simplicity, that the initial degree $d$ is also a power of 2.
+
+##### Query phase
+
+Verifier starts from selecting a random $z \in L$. and queries $f_0(z)$ and $f_0(-z)$, stating a simple system of equations, in which $g_0(z^2)$ and $h_0(z^2)$ can be treated as variables:
+
+$$
+f_0(z) = g_0(z^2) + zh_0(z^2) \\
+f_0(-z) = g_0(z^2) - zh_0(z^2)
+$$
+
+Verifier can solve this system of equations and deduct the values of $g_0(z^2)$ and $h_0(z^2)$. Next the verifier can compute the value of $f_1(z^2)$ which is a linear combination of the two. Verifier can now query $f_1(z^2)$ and check, whether above computations were correct. If the computation is correct, than this commitment from the prover is also correct and verifier can repeat this test for $f_1(-z^2)$ and further for next equation systems.
+After $log d$ such steps the verifiers comes down to the constant polynomials commited by the prover. Now the verifer can check, whether the result of previously solved functions is equal to the  commited constant polynomials from prover.  
+The routine described above takes all together $O(log(d)) time.$
+
+The whole query phase won't give us 100% certainty, that prover is not cheating, so it need to be repeated multiple times to increase the probability of the statement being truth to desired level.
 
 ## Bibliography
 
