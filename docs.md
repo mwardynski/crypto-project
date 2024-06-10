@@ -334,6 +334,32 @@ https://www.crowdcast.io/e/the-cambrian-explosion
 
 https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf
 
+https://medium.com/starkware/stark-math-the-journey-begins-51bd2b063c71
+
+https://medium.com/starkware/arithmetization-i-15c046390862
+
+https://medium.com/starkware/arithmetization-ii-403c3b3f4355
+
+https://medium.com/starkware/low-degree-testing-f7614f5172db
+
+https://medium.com/starkware/a-framework-for-efficient-starks-19608ba06fbe
+
+https://zkp.science/
+
+https://youtu.be/VUN35BC11Qw?si=pPhQN3ojQrR_IRSH
+
+https://youtu.be/9VuZvdxFZQo?si=dpDaDMghUVCoBSHR
+
+https://youtu.be/L7tZeO8ihcQ?si=cOeH6NtpdELUFWjy
+
+https://eccc.weizmann.ac.il/report/2017/134/
+
+https://eprint.iacr.org/2018/046.pdf
+
+
+
+
+
 
 
 
