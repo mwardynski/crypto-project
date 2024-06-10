@@ -129,7 +129,7 @@ Because of the complexity of large polynomials and large runtime of multiplying 
 secret point **s** such that **t(s) * k(s) = va(s) * wb(s)**.
 
 Currently, the most common constructions of SNARKs involve a CRS (Common Reference String) and a set-up of initial parameters. Firstly, we choose a group and agenerator **g**, and an encryption
-scheme **E** where **E(x) = g^x**. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
+scheme **E** where **$E(x) = g^x$**. Then, the verifier secretly chooses **s** as well as another value **z** and publicly posts as part of the CRS the following:
 
 E(s^0), E(s^1), ... , E(s^d)
 
