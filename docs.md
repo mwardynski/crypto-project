@@ -165,14 +165,14 @@ n = E(z * (σ + f(s)))
 
 and sends it to a verifier.
 
-E(σ + f(s)) = g^(σ + f(s)) = g^σ + g^f(s) = E(f(s)) * E(σ)
+$E(σ + f(s)) = g^(σ + f(s)) = g^σ + g^f(s) = E(f(s)) * E(σ)$
 
 We can see from above that the prover can still compute **m** from the public parameters in the CRS, and by the same token, the prover can also compute **n**. Once the verifier receives **m**
 and **n**, the values are inputted into the pairing function **p** in a similar fashion to the example above:
 
-p(m, g^z) = p(g^(σ + f(s), g^z) = p(g, g)^(z * (σ + f(s)))
+$p(m, g^z) = p(g^(σ + f(s), g^z) = p(g, g)^(z * (σ + f(s)))$
 
-p(n, g^z) = p(g^(z * (σ + f(s)), g) = p(g, g)^(z * (σ + f(s)))
+$p(n, g^z) = p(g^(z * (σ + f(s)), g) = p(g, g)^(z * (σ + f(s)))$
 
 From the equations above, we see that verification process still functions properly, and the verifier’s computation is still limited to the pairing function.
 
