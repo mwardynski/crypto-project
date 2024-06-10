@@ -1,8 +1,26 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({ tex2jax: {inlineMath: [['$', '$']]}, messageStyle: "none" });
+</script>
+
 ![image](https://github.com/mwardynski/crypto-zk/assets/61807667/0329409b-089f-4002-ae90-92a358cee254)
 
 **Course: Cryptography methods in data science**
 
 **Authors: Marcin Wardyński, Bartłomiej Jamiołkowski** 
+
+### Content of project
+
+* [General idea behind Zero-Knowledge Proof](#general-idea-behind-zero-knowledge-proof)
+* [Intuitive example of a ZKP](#intuitive-example-of-a-zkp)
+* [Academic example of ZKP](#academic-example-of-zkp)
+* [First introduction of ZK proof](#first-introduction-of-zk-proof)
+* [Adjustments needed for Blockchain](#adjustments-needed-for-blockchain)
+* [STARK vs SNARK](#stark-vs-snark)
+* [Characteristics of various concepts](#characteristics-of-various-concepts)
+* [Mathematics behind SNARK](#mathematics-behind-snark)
+* [Mathematics behind STARK](#mathematics-behind-stark)
+* [Bibliography](#bibliography)
 
 ## General idea behind Zero-Knowledge Proof
 
@@ -237,7 +255,7 @@ If prover is honest, then $g$ is the evaluation of $Q'(X)$, because $C(\alpha) =
 
 #### Soundness
 
-The prover cheats, so $\exist x_0, f(x_0) \notin \{1, ..., 10\}$.
+The prover cheats, so $\exists x_0, f(x_0) \notin \{1, ..., 10\}$.
 
 Let $P(X)$ be the interpolant of $f$  
 $C(P(X))$ doesn't vanish on all $x_0 \in \{1, ..., 10^6\}$  
@@ -316,7 +334,9 @@ Additional we assume for simplicity, that the initial degree $d$ is also a power
 Verifier starts from selecting a random $z \in L$. and queries $f_0(z)$ and $f_0(-z)$, stating a simple system of equations, in which $g_0(z^2)$ and $h_0(z^2)$ can be treated as variables:
 
 $$
-f_0(z) = g_0(z^2) + zh_0(z^2) \\
+f_0(z) = g_0(z^2) + zh_0(z^2)
+$$
+$$
 f_0(-z) = g_0(z^2) - zh_0(z^2)
 $$
 
