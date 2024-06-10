@@ -267,7 +267,16 @@ https://starkware.co/stark-101/
 
 
 Proof recursion -> prover prooing, that it run a verifier - it can go down many times
-
 Proof systems
+
+## Bibliography
+
+https://chain.link/education/zero-knowledge-proof-zkp
+
+https://www.crowdcast.io/e/the-cambrian-explosion
+
+https://fisher.wharton.upenn.edu/wp-content/uploads/2020/09/Thesis_Terrence-Jo.pdf
+
+
 
 
