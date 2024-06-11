@@ -44,7 +44,7 @@ cheating.
 One of the first valid general ZKP systems was proposed by Goldreich, Micali, and Widgerson, specifically to verify that a prover knew the 3-coloring of a graph.
 The 3-coloring graph problem is an NP-Complete problem stated as follows:
 
-“Given a graph G, can you color the nodes with <3 colors such that for every edge $\{u, v\}$ we have $f(u) \neq f(v)$?” 
+“Given a graph G, can you color the nodes with $\le 3$ colors such that for every edge $\{u, v\}$ we have $f(u) \neq f(v)$?” 
 
 ![image](https://github.com/mwardynski/crypto-zk/assets/61807667/e68e8b94-5995-40b2-9556-34974238ecd0)
 
