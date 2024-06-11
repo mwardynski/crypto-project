@@ -208,7 +208,7 @@ Arithmetization - use of *low degree polynomials* to argue about computation
 
 Polynomial of *degree d*: $P(X) = \sum_{i \leq d} a_iX^i$  
 
-Function $f: S \to \mathbb{F}$ : "lookup table" having a value from $\mathbb{F}$ for each each element from the domain $S$.  
+Function $f: S \to \mathbb{F}$ : "lookup table" having a value from $\mathbb{F}$ for each element from the domain $S$.  
 Function is of *degree d*, if it evaluates a *degree d* polynomial: $\forall x_0 \in S, f(x) = P(x)$
 
 Fact: Two distinct polynomials of *degree d* interact at at most *d* points, so two distinct functions of *degree d* can interact on very low number of points if only the domain is big enough.
@@ -241,7 +241,7 @@ Prover commits to the two following functions:
 
 Verifier sets polynomials $C(X), D(X)$ in the following way:
 - $C(X) = (X-1)(X-2)...(X-10)$ - vanishes on any value from $\{1, ..., 10\}$
-- $D(X) = (X-1)(X-2)...(X-10^6)$ - same like above, but for the claim domain, which is $\{1, ..., 10^6\}$
+- $D(X) = (X-1)(X-2)...(X-10^6)$ - same like above, but for the claimed domain, which is $\{1, ..., 10^6\}$
 
 #### Completeness
 
@@ -272,7 +272,7 @@ Prover appends to the initial list of integeres a few (e.g. 10) random entries, 
 
 Verifier selects random $x_0 \in \{10^6+1, ..., 10^9\}$
 
-#### Enforcing low-degreeness
+### Enforcing low-degreeness
 
 Testing for low degreeness is one of the major tools for probabilistic proofs.
 
@@ -285,7 +285,7 @@ Arithmetization described in the previous sections ensures, that the honest prov
 The test over the whole function's $f$ domain $L$ requires to check all the points, so it's the test complexity stays linear.  
 There exists a test, which by querying $f$ at a small number of locations can correlated it with either case one, or two. In the following part of this section we will describe this test.
 
-##### Direct test
+#### Direct test
 
 The simple test, which checks whether a polynomial is of degree less than $d$ requires $d+1$ queries and relies on the following statement, which is true for polynomials:  
 *Any polynomial of degree less than $d$ is fully determined by its values at $d$ distinct locations of $F$*.
@@ -299,7 +299,7 @@ By definition, $h(x)$ will be identical to $p(x)$ if $f(x)$ is equal to polynomi
 Unfortunately, we need to reduce the complexity of this test even lower, which is to $O(log d)$, to suffice the requirements.
 
 
-##### FRI - Fast Reed — Solomon Interactive Oracle Proof of Proximity - general idea
+#### FRI - Fast Reed — Solomon Interactive Oracle Proof of Proximity
 
 To reduce the complexity, we need to receive some auxiliary information about the function $f$. After receiving this information from the prover, the complexity can be reduced to $O(log d)$, yet for the whole process, the prover remains untrusted. The prover will enable the verifier to query the auxiliary functions on selected by verifier locations, but to guarantee, that the prover won't be able to cheat and send the correct value after getting to know the query from verifier, prover needs to commit to the values of the auxiliary function before receiving the actual query. In the case of STARK, prover commits to these functions using Merkle tree.
 
